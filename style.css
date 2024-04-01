@@ -1,0 +1,15 @@
+.image-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 120px;
+    .image-card {
+        background-color: rgb(57, 50, 51);
+        padding: 30px;
+    }
+}
+h1 {
+    text-align: center;
+}
