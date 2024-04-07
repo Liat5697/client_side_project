@@ -1,4 +1,7 @@
 const container = document.getElementById('container');
+const countTryElement = document.getElementById('countTry');
+
+
 const cardImage = './images/card.svg';
 const imagesArray = [
     { src: '/images/instagram.svg', isDisplay: false, imageType: 1 },
@@ -14,6 +17,10 @@ const imagesArray = [
     { src: '/images/youtube.svg', isDisplay: false, imageType: 6 },
     { src: '/images/youtube.svg', isDisplay: false, imageType: 6 }
 ];
+
+let countClick = 0;
+let clickForTry = 0;
+let countTry = 0;
 
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -31,7 +38,7 @@ const newArray = shuffleArray(imagesArray);
 
 
 const imagesGrid = document.getElementById('image-grid');
-const change = (index, other) => {
+const changeToFalse = (index, other) => {
     
     
     newArray[index].isDisplay = false;
@@ -48,25 +55,50 @@ const makeTrue = ( other) => {
     }, 2000)
 }
 window.handleChangeImage = function (index, imageType) {
+    if(countClick < 3){
+
+        clickForTry++;
+    }
+    countClick++;
+    if(clickForTry === 2){
+        countTry++;
+        renderTry();
+        clickForTry = 0;
+        
+    }
+    if ( countClick > 2) {
+        
+        
+        setTimeout(() => { 
+            countClick = 0;
+            
+        }, 2000)
+        return ;
+    }
     newArray[index].isDisplay = true;
     
     
     renderImages();
     
     const relevantImages = newArray.filter(image => image.imageType === imageType && image.isDisplay === true);
+
+   
  
     if(relevantImages.length !== 2) {
+        
         setTimeout(() => {
             
-            change(index);
+            changeToFalse(index);
+            
         }, 2000)
         
     }
     if (relevantImages.length === 2) {
         const other = newArray.findIndex((img, i) => i != index && img.imageType === imageType );
-        console.log(other);
+        
         makeTrue( other);
-        console.log(newArray);
+        
+       
         
     } 
 }
@@ -92,3 +124,10 @@ function renderImages() {
 
 
 renderImages();
+
+const renderTry = () => { 
+    console.log(countTry);
+    countTryElement.innerHTML = countTry;
+    
+}
+renderTry()

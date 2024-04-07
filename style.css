@@ -13,3 +13,14 @@
 h1 {
     text-align: center;
 }
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.count {
+    position: relative;
+    top: 600px;
+    display: flex;
+    gap: 10px;
+}
