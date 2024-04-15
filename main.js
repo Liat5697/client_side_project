@@ -57,8 +57,7 @@ const makeTrue = ( other) => {
 }
 window.handleChangeImage = function (index, imageType) {
     countClick++;
-    newArray[index].isDisplay = true;
-    renderImages();
+    
 
     if(countClick < 3){
 
@@ -82,14 +81,15 @@ window.handleChangeImage = function (index, imageType) {
     }
   
     
-    
+    newArray[index].isDisplay = true;
+    renderImages();
     
     const relevantImages = newArray.filter(image => image.imageType === imageType && image.isDisplay === true);
 
    
  
-    if(relevantImages.length !== 2) {
-        
+    if(relevantImages.length < 2) {
+        console.log(index);
         setTimeout(() => {
             
             changeToFalse(index);
@@ -98,6 +98,7 @@ window.handleChangeImage = function (index, imageType) {
         
     }
     if (relevantImages.length === 2) {
+        console.log('mmm');
         const other = newArray.findIndex((img, i) => i != index && img.imageType === imageType );
         
         makeTrue( other);
