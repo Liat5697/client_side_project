@@ -39,11 +39,11 @@ const newArray = shuffleArray(imagesArray);
 
 
 const imagesGrid = document.getElementById('image-grid');
-const changeToFalse = (index, other) => {
+const changeToFalse = (index) => {
     
     
     newArray[index].isDisplay = false;
-    renderImages()
+    renderImages();
 }
 
 const makeTrue = ( other) => {
@@ -56,11 +56,15 @@ const makeTrue = ( other) => {
     }, 2000)
 }
 window.handleChangeImage = function (index, imageType) {
+    countClick++;
+    newArray[index].isDisplay = true;
+    renderImages();
+
     if(countClick < 3){
 
         clickForTry++;
     }
-    countClick++;
+    
     if(clickForTry === 2){
         countTry++;
         renderTry();
@@ -76,10 +80,9 @@ window.handleChangeImage = function (index, imageType) {
         }, 2000)
         return ;
     }
-    newArray[index].isDisplay = true;
+  
     
     
-    renderImages();
     
     const relevantImages = newArray.filter(image => image.imageType === imageType && image.isDisplay === true);
 
