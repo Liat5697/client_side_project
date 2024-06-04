@@ -89,7 +89,7 @@ window.handleChangeImage = function (index, imageType) {
    
  
     if(relevantImages.length < 2) {
-        console.log(index);
+        // console.log(index);
         setTimeout(() => {
             
             changeToFalse(index);
@@ -98,7 +98,7 @@ window.handleChangeImage = function (index, imageType) {
         
     }
     if (relevantImages.length === 2) {
-        console.log('mmm');
+        // console.log('mmm');
         const other = newArray.findIndex((img, i) => i != index && img.imageType === imageType );
         
         makeTrue( other);
