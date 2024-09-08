@@ -1,4 +1,3 @@
-
 const container = document.getElementById('container');
 const countTryElement = document.getElementById('countTry');
 
@@ -106,7 +105,7 @@ window.handleChangeImage = function (index, imageType) {
        
         
     } 
-}
+    }
     
    
     
